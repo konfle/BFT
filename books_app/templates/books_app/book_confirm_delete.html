@@ -1,0 +1,27 @@
+{% extends 'books_app/base.html' %}
+{% block content %}
+      <div class="form-group">
+            <label class="control-label col-sm-2"> </label>
+        <div class="col-sm-10">
+            <h2>Are you sure you want to delete the book "{{ book.title }}"?</h2>
+        </div>
+      </div>
+         <!--
+      <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+          <div class="checkbox">
+            <label><input type="checkbox"> Remember me</label>
+          </div>
+        </div>
+      </div>
+      check box mb for filtering -->
+      <div class="form-group">
+        <form method="POST" class="post-form">
+            <div class="col-sm-offset-2 col-sm-10">
+              {% csrf_token %}
+              <button type="submit" class="btn btn-danger">Yes, delete</button>
+              <a href="{% url 'book_detail' book.id %}" class="btn btn-info">Cancel</a>
+            </div>
+        </form>
+      </div>
+{% endblock content %}
